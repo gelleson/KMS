@@ -1,3 +1,14 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
 
-# Create your views here.
+from .models import Scope
+from .serializers import ScopeSerializer
+
+
+class ScopeModelViewSet(ModelViewSet):
+    queryset = Scope.objects.none()
+    serializer_class = ScopeSerializer
+
+    def get_queryset(self):
+        return Scope.objects.filter(
+            user=self.request.user,
+        )

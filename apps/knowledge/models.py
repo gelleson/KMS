@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 
 class Scope(models.Model):
 
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
     name = models.CharField(max_length=255)
     description = models.TextField()
@@ -22,7 +22,7 @@ class Scope(models.Model):
 class Note(models.Model):
 
     scope = models.ForeignKey(Scope, on_delete=models.CASCADE)
-    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     uid = models.UUIDField(default=uuid4())
 
     name = models.CharField(max_length=255)
