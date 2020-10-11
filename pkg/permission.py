@@ -2,7 +2,7 @@ from rest_framework import permissions
 
 
 class ContentOwnerPermission(permissions.BasePermission):
-    message = 'Adding customers not allowed.'
+    message = 'Adding or change resource not allowed.'
 
     def has_object_permission(self, request, view, obj):
         # Read permissions are allowed to any request,
@@ -11,4 +11,4 @@ class ContentOwnerPermission(permissions.BasePermission):
             return True
 
         # Instance must have an attribute named `owner`.
-        return obj.user == request.user
+        return obj.owner == request.user
