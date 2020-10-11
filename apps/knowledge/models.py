@@ -4,12 +4,20 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 
+class Colors(models.TextChoices):
+    SILVER = "#CDD3D5"
+    GREEN = "#77CBB9"
+    BLUE = "#75B8C8"
+    RED = "#A8201A"
+
+
 class Scope(models.Model):
 
     owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
     name = models.CharField(max_length=255)
     description = models.TextField()
+    color_card = models.CharField(max_length=255, default=Colors.BLUE, choices=Colors.choices)
 
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -31,7 +39,7 @@ class NoteBase(models.Model):
 
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         abstract = True
@@ -43,7 +51,7 @@ class NoteBase(models.Model):
 class Note(NoteBase):
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['-updated_at', '-created_at']
 
 
 class NoteVersionPoint(NoteBase):
