@@ -2,7 +2,7 @@ from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 
 from pkg.permission import ContentOwnerPermission
 
-from .services import note
+from .services.note import NoteService
 from .models import Scope, Note, NoteVersionPoint
 from .serializers import ScopeSerializer, NoteSerializer, NoteVersionPointSerializer
 
@@ -35,7 +35,7 @@ class NoteModelViewSet(ModelViewSet):
         )
 
     def perform_update(self, serializer):
-        note.update_note(serializer.save())
+        NoteService.update_note(serializer.save())
 
 
 class NoteVersionReadViewSet(ReadOnlyModelViewSet):
