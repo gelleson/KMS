@@ -31,6 +31,7 @@ class NoteBase(models.Model):
 
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         abstract = True
@@ -40,7 +41,9 @@ class NoteBase(models.Model):
 
 
 class Note(NoteBase):
-    pass
+
+    class Meta:
+        ordering = ['-created_at']
 
 
 class NoteVersionPoint(NoteBase):

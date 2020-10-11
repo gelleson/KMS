@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {KnowledgeApiService} from "../../../../../api/src/lib/knowledge-api.service";
-import {Scope} from "../../../../../api/src/lib/models/knowledge.model";
+import {Note, Scope} from "../../../../../api/src/lib/models/knowledge.model";
 
 @Component({
   selector: 'app-overview',
@@ -9,7 +9,7 @@ import {Scope} from "../../../../../api/src/lib/models/knowledge.model";
 })
 export class OverviewComponent implements OnInit {
   scopes: Scope[] = [];
-
+  notes: Note[] = [];
 
   constructor(private knowledgeApiService: KnowledgeApiService) { }
 
@@ -17,6 +17,10 @@ export class OverviewComponent implements OnInit {
     this.knowledgeApiService
       .getScopes()
       .subscribe(scopes => this.scopes = scopes);
+
+    this.knowledgeApiService
+      .getNotes()
+      .subscribe(notes => this.notes = notes);
   }
 
 }

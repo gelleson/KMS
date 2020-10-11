@@ -1,3 +1,5 @@
+from django.utils.timezone import now
+
 from ..models import Note, NoteVersionPoint
 
 
