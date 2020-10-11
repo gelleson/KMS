@@ -5,6 +5,11 @@ class NoteService:
 
     @staticmethod
     def update_note(note: Note) -> NoteVersionPoint:
+        """
+        Updates model and incr version of the Note. After create NoteVersionPoint entry to keep history of the document
+        :param note:
+        :return:
+        """
         note.version += 1
 
         note.save()
