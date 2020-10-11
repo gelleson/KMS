@@ -15,3 +15,19 @@ class Scope(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Note(models.Model):
+
+    scope = models.ForeignKey(Scope, on_delete=models.CASCADE)
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+
+    name = models.CharField(max_length=255)
+    content = models.TextField()
+    version = models.IntegerField(default=0)
+
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
