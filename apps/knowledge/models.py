@@ -19,7 +19,7 @@ class Scope(models.Model):
         return self.name
 
 
-class Note(models.Model):
+class NoteBase(models.Model):
 
     scope = models.ForeignKey(Scope, on_delete=models.CASCADE)
     owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
@@ -32,12 +32,20 @@ class Note(models.Model):
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        abstract = True
+
     def __str__(self):
         return self.name
 
 
-class NoteVersionPoint(Note):
+class Note(NoteBase):
+    pass
+
+
+class NoteVersionPoint(NoteBase):
     archived_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.name} - {self.version}"
+

@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Scope, Note, NoteVersionPoint
+
+
+admin.site.register(Scope)
+admin.site.register(Note)
+admin.site.register(NoteVersionPoint)

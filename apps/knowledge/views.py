@@ -2,6 +2,7 @@ from rest_framework.viewsets import ModelViewSet
 
 from pkg.permission import ContentOwnerPermission
 
+from .services import note
 from .models import Scope, Note, NoteVersionPoint
 from .serializers import ScopeSerializer, NoteSerializer, NoteVersionPointSerializer
 
@@ -13,7 +14,7 @@ class ScopeModelViewSet(ModelViewSet):
 
     def get_queryset(self):
         return Scope.objects.filter(
-            user=self.request.user,
+            owner=self.request.user,
         )
 
 
@@ -26,21 +27,13 @@ class NoteModelViewSet(ModelViewSet):
 
         if self.kwargs.get("scope_id", None):
             return Note.objects.filter(
-                user=self.request.user,
+                owner=self.request.user,
                 scope_id=self.kwargs.get("scope_id"),
             )
 
         return Note.objects.filter(
-            user=self.request.user,
+            owner=self.request.user,
         )
 
     def perform_update(self, serializer):
-        note: Note = serializer.save()
-
-        NoteVersionPoint.objects.create(
-            owner=note.owner,
-            scope=note.scope,
-            uid=note.uid,
-            created_at=note.created_at,
-            content=note.content,
-        )
+        note.update_note(serializer.save())
