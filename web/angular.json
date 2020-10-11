@@ -28,6 +28,7 @@
               "projects/knowledge/src/assets"
             ],
             "styles": [
+              "projects/knowledge/src/theme.less",
               "projects/knowledge/src/styles.scss"
             ],
             "scripts": []
@@ -163,6 +164,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "knowledge"
 }
