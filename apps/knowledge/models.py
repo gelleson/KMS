@@ -1,3 +1,5 @@
+from uuid import uuid4
+
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -21,6 +23,7 @@ class Note(models.Model):
 
     scope = models.ForeignKey(Scope, on_delete=models.CASCADE)
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    uid = models.UUIDField(default=uuid4())
 
     name = models.CharField(max_length=255)
     content = models.TextField()
