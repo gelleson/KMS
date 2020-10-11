@@ -34,3 +34,10 @@ class Note(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class NoteVersionPoint(Note):
+    archived_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} - {self.version}"
