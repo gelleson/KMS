@@ -23,6 +23,13 @@ class NoteModelViewSet(ModelViewSet):
     permission_classes = (ContentOwnerPermission,)
 
     def get_queryset(self):
+
+        if self.kwargs.get("scope_id", None):
+            return Note.objects.filter(
+                user=self.request.user,
+                scope_id=self.kwargs.get("scope_id"),
+            )
+
         return Note.objects.filter(
             user=self.request.user,
         )
