@@ -22,5 +22,4 @@ export class OverviewComponent implements OnInit {
       .getNotes()
       .subscribe(notes => this.notes = notes);
   }
-
 }

@@ -12,6 +12,7 @@ class ScopeSerializer(ModelSerializer):
 
 
 class NoteSerializer(ModelSerializer):
+    owner = HiddenField(default=CurrentUserDefault())
 
     class Meta:
         model = Note

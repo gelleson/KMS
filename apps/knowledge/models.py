@@ -17,7 +17,7 @@ class Scope(models.Model):
 
     name = models.CharField(max_length=255)
     description = models.TextField()
-    color_card = models.CharField(max_length=255, default=Colors.BLUE, choices=Colors.choices)
+    color_card = models.CharField(max_length=255, null=True, blank=True)
 
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

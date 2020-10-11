@@ -18,6 +18,13 @@ export class KnowledgeApiService {
     );
   }
 
+  createScope(scope: Scope): Observable<Scope> {
+    return this.http.post<Scope>(
+      `${this.baseUrl}/knowledge/scopes/`,
+          scope,
+    )
+  }
+
   getNotes(scope?: number, search?: NoteSearchQuery): Observable<Note[]> {
     if (!scope) {
       return this.http.get<Note[]>(
