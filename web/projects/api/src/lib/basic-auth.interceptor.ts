@@ -17,7 +17,7 @@ export class BasicAuthInterceptor implements HttpInterceptor {
     request = request.clone({
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        'Authorization': 'Basic ' + btoa('user:test')
+        'Authorization': 'Basic ' + btoa('user:testtest12')
       })
     })
 
