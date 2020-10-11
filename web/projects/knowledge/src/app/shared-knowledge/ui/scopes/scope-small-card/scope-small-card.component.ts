@@ -1,0 +1,18 @@
+import {Component, Input, OnInit} from '@angular/core';
+import {Scope} from '../../../../../../../api/src/lib/models/knowledge.model';
+
+@Component({
+  selector: 'app-scope-small-card',
+  templateUrl: './scope-small-card.component.html',
+  styleUrls: ['./scope-small-card.component.scss']
+})
+export class ScopeSmallCardComponent implements OnInit {
+  @Input()
+  scope!: Scope;
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}

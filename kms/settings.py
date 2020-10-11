@@ -50,12 +50,14 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'django_filters',
+    'corsheaders',
     'apps.knowledge',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -81,6 +83,8 @@ TEMPLATES = [
         },
     },
 ]
+
+CORS_ALLOW_ALL_ORIGINS = True
 
 WSGI_APPLICATION = 'kms.wsgi.application'
 

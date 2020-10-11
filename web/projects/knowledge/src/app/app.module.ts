@@ -13,6 +13,8 @@ import en from '@angular/common/locales/en';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
+import {ApiModule} from "../../../api/src/lib/api.module";
+import {SharedKnowledgeModule} from "./shared-knowledge/shared-knowledge.module";
 
 registerLocaleData(en);
 
@@ -28,7 +30,11 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     IconsProviderModule,
     NzLayoutModule,
-    NzMenuModule
+    NzMenuModule,
+    ApiModule.forRoot({
+      baseUri: 'http://localhost:8000',
+    }),
+    SharedKnowledgeModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

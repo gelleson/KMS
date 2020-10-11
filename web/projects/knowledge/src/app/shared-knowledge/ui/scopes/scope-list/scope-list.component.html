@@ -1,0 +1,6 @@
+<h2 *ngIf="withTitle">Scopes</h2>
+
+<div class="ctx">
+  <app-scope-small-add-card></app-scope-small-add-card>
+  <app-scope-small-card *ngFor="let scope of scopes" [scope]="scope"></app-scope-small-card>
+</div>
