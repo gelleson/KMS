@@ -4,6 +4,8 @@ It's a simple project to keep my knowledge. It's split into few modules divided 
 
 -  Save and edit knowledge in markdown files. 
 -  Versioning of the knowledge.
+-  Linking to another knowledge unit
+-  Scope of the knowledge
 
 The second purpose of this project is the language training system. I need some free tool which can assist with my learning process. I hope this project will help other people.
 
