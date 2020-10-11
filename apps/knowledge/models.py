@@ -46,6 +46,9 @@ class Note(NoteBase):
 class NoteVersionPoint(NoteBase):
     archived_at = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-version']
+
     def __str__(self):
         return f"{self.name} - {self.version}"
 
