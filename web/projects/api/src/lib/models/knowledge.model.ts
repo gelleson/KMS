@@ -16,6 +16,7 @@ export interface Note {
   version?: number;
   is_active?: boolean;
   created_at?: Date;
+  updated_at?: Date;
   scope?: number;
   owner?: number;
 }
@@ -29,6 +30,7 @@ export interface NoteHistoryPoint {
   is_active?: boolean;
   created_at?: Date;
   archived_at?: Date;
+  archive_id?: string;
   scope?: number;
   owner?: number;
 }

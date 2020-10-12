@@ -1,0 +1,11 @@
+<h1>
+  <input nz-input type="text" [(ngModel)]="note.name" >
+</h1>
+
+<h4>{{note?.created_at | date}}</h4>
+
+<div [froalaEditor]="options" [(froalaModel)]="content"></div>
+
+<br>
+
+<button nz-button nzType="primary" [disabled]="!(loaded && note.content !== content)" (click)="save()">Save</button>

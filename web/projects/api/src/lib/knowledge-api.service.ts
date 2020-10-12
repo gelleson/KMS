@@ -1,7 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {BASE_URL} from "./tokens";
-import {Note, Scope, NoteSearchQuery} from "./models/knowledge.model";
+import {Note, Scope, NoteSearchQuery, NoteHistoryPoint} from "./models/knowledge.model";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -15,6 +15,12 @@ export class KnowledgeApiService {
   getScopes(): Observable<Scope[]> {
     return this.http.get<Scope[]>(
       `${this.baseUrl}/knowledge/scopes/`,
+    );
+  }
+
+  getScope(scope: number): Observable<Scope> {
+    return this.http.get<Scope>(
+      `${this.baseUrl}/knowledge/scopes/${scope}/`,
     );
   }
 
@@ -40,6 +46,12 @@ export class KnowledgeApiService {
     );
   }
 
+  getNote(note: number): Observable<Note> {
+    return this.http.get<Note>(
+        `${this.baseUrl}/knowledge/notes/${note}/`
+      );
+  }
+
   createNote(note: Note): Observable<Note> {
     return this.http.post<Note>(
       `${this.baseUrl}/knowledge/notes/`,
@@ -48,10 +60,23 @@ export class KnowledgeApiService {
   }
 
   updateNote(id: number, note: Note): Observable<Note> {
-    return this.http.post<Note>(
+    return this.http.put<Note>(
       `${this.baseUrl}/knowledge/notes/${id}/`,
       note
     )
   }
+
+  getRevisions(id: string): Observable<NoteHistoryPoint[]> {
+    return this.http.get<NoteHistoryPoint[]>(
+      `${this.baseUrl}/knowledge/notes/${id}/revision/`
+    )
+  }
+
+  getRevision(id: string, revision: string): Observable<NoteHistoryPoint> {
+    return this.http.get<NoteHistoryPoint>(
+      `${this.baseUrl}/knowledge/notes/${id}/revision/${revision}/`
+    )
+  }
+
 
 }

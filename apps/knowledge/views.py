@@ -42,6 +42,8 @@ class NoteVersionReadViewSet(ReadOnlyModelViewSet):
     queryset = NoteVersionPoint.objects.none()
     serializer_class = NoteVersionPointSerializer
 
+    lookup_field = 'archive_id'
+
     def get_queryset(self):
         return NoteVersionPoint.objects.filter(
             owner=self.request.user,

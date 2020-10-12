@@ -12,7 +12,7 @@
             </ng-template>
             <nz-list-item-meta-title>
               <small [style.background]="scopeMap.get(item.scope)?.color_card">{{scopeMap.get(item.scope)?.name }}</small>
-              <a href="https://ng.ant.design">{{ item.name}}</a>
+              <a routerLink="/notes/{{item.id}}">{{ item.name}}</a>
             </nz-list-item-meta-title>
           </nz-list-item-meta>
         </ng-container>

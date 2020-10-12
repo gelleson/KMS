@@ -7,6 +7,7 @@ import {MatRippleModule} from "@angular/material/core";
 import {ScopeSmallAddCardComponent} from "./ui/scopes/scope-small-add-card/scope-small-add-card.component";
 import { NotesOverviewComponent } from './ui/notes/notes-overview/notes-overview.component';
 import {NzListModule} from "ng-zorro-antd/list";
+import {RouterModule} from "@angular/router";
 
 
 
@@ -21,6 +22,7 @@ import {NzListModule} from "ng-zorro-antd/list";
     NzCardModule,
     MatRippleModule,
     NzListModule,
+    RouterModule,
   ]
 })
 export class SharedKnowledgeModule { }

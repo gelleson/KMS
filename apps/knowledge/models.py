@@ -31,7 +31,7 @@ class NoteBase(models.Model):
 
     scope = models.ForeignKey(Scope, on_delete=models.CASCADE)
     owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    uid = models.UUIDField(default=uuid4())
+    uid = models.UUIDField(default=uuid4)
 
     name = models.CharField(max_length=255)
     content = models.TextField()
@@ -55,6 +55,7 @@ class Note(NoteBase):
 
 
 class NoteVersionPoint(NoteBase):
+    archive_id = models.UUIDField(default=uuid4)
     archived_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

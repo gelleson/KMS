@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Scope} from '../../../../../../../api/src/lib/models/knowledge.model';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-scope-small-card',
@@ -10,9 +11,14 @@ export class ScopeSmallCardComponent implements OnInit {
   @Input()
   scope!: Scope;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  route() {
+    this.router
+      .navigate(["scopes", this.scope.id])
+      .then();
+  }
 }

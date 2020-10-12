@@ -29,7 +29,9 @@
             ],
             "styles": [
               "projects/knowledge/src/theme.less",
-              "projects/knowledge/src/styles.scss"
+              "projects/knowledge/src/styles.scss",
+              "./node_modules/froala-editor/css/froala_editor.pkgd.min.css",
+              "./node_modules/froala-editor/css/froala_style.min.css"
             ],
             "scripts": []
           },

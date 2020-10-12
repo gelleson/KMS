@@ -1,0 +1,31 @@
+<nz-spin [nzSpinning]="loading">
+  <div *ngIf="revision == null">
+    <h1>{{note?.name}}</h1>
+
+
+    <div class="content">
+      <h4>{{note?.created_at | date}}</h4>
+      <div class="ctxd"> |</div>
+      <a routerLink="edit">Edit</a>
+      <div class="ctxd"> |</div>
+      <a routerLink="../{{note.uid}}/revision">Versions</a>
+
+    </div>
+
+    <div [froalaView]="note.content"></div>
+
+  </div>
+
+  <div *ngIf="revision">
+    <h1>{{revision?.name}}</h1>
+
+
+    <div class="content">
+      <h4>{{revision?.created_at | date}}</h4>
+    </div>
+
+    <div [froalaView]="revision.content"></div>
+
+  </div>
+
+</nz-spin>
